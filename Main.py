@@ -137,8 +137,8 @@ nodata=None
 precision=7
 sets=['Training_set','Test_set']
 count = 0
-
-for x in range(200003,201812):#1,1812
+x=200003
+while(x<201812)
 	#file1=rasterio.open("H:/Project/Rainfall/"+str(x)+".tif")
 	#file2=rasterio.open("H:/Project/Rainfall/"+str(x-1)+".tif")
 	#file3=rasterio.open("H:/Project/Rainfall/"+str(x-2)+".tif")
@@ -162,7 +162,8 @@ for x in range(200003,201812):#1,1812
 	a=str(x)
 	if a.endwith('12'):
 		x = x + 101 #99
-
+    else
+	    x=x + 1
 ##### Unet Training and Testing #####
 
 train_datagen = ImageDataGenerator(
@@ -170,8 +171,8 @@ train_datagen = ImageDataGenerator(
         shear_range=0,
         zoom_range=0,
         horizontal_flip=False,
-        width_shift_range=0.1,  # randomly shift images horizontally (fraction of total width)
-        height_shift_range=0.1)  # randomly shift images vertically (fraction of total height))
+        width_shift_range=0.1, 
+        height_shift_range=0.1)
 
 test_datagen = ImageDataGenerator(rescale=1./255)  
 
@@ -219,7 +220,7 @@ color1=("red","blue","green")
 color2=("cyan","yellow","maroon")
 
 # Plot Intial monthly graph
-month=[1,2,3,4,5,6,7,8,9,10,11,12]
+month=[i for i in range(1,13)]
 for i in range(0,3):
 	# Create plot
 	fig = plt.figure()
@@ -262,7 +263,7 @@ for i in range(0,3):
 
 # Plot Intial Average Annual Graph
 
-year=[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018]
+year=[i for i in range(2000,2019)]
 
 for i in range(0,3):
 	# Create plot

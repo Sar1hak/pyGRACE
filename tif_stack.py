@@ -26,7 +26,9 @@ def tif_stack(file1,file2,file3,index):
 	out_format = 'gtiff'
 	nodata_value = -9999
 	
-	command = 'C:/Users/LENOVO/Anaconda3/Scripts/gdal_merge.py -o '+out_filename+' -of '+out_format+' -separate -q -n '+str(nodata_value)+' '+file1 +' '+ file2+' '+ file3 
+	command = ('C:/Users/LENOVO/Anaconda3/Scripts/gdal_merge.py -o '+out_filename+' -of '+ 
+	                out_format+' -separate -q -n '+str(nodata_value)+ ' ' +
+					file1 + ' ' + file2 + ' ' + file3 )
 	print (command)
        
 	# run gdal_merge.py tool with os call

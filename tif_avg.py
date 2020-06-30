@@ -1,27 +1,17 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Jun 13 18:03:58 2019
-
-@author: LENOVO
-"""
-
 import os
 import gdal
 import numpy
 
 def average_value():
-	os.chdir("H:/summer project/Rainfall")
+	#os.chdir("H:/summer project/Rainfall")
 	
-	data={}
-	data1={}
-	data2={}
-	yr=[]
-	m={}
+	data,data1,data2=[],[],[]
+	yr,m=[],[]
 	y=0
 	folder=['NOAH TWSA','Temperature','Precipitation']
-#open folder	
+    #open folder	
 	for x in folder:
-#open file		
+        #open file		
 		for i in range(200001,201813):
 			dir = gdal.Open('H:/summer project/Rainfall/'+ x +str(i)+'.tif')
 			data = dir.ReadAsArray().astype(numpy.float32)
