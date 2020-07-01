@@ -7,6 +7,7 @@ Research paper: "Combining physically based modeling and Deep Learning for fusin
 satellite data: Can we learn from mismatch?"
 
 Data used:
+
 GRACE->
     Gravity recovery and climate experiment (GRACE) enabled remote sensing of TWS anomalies, 
     i.e., variations from a long-term mean, at regional to continental scales. This study uses 
