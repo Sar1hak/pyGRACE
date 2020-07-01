@@ -1,15 +1,15 @@
 
-import rasterio.merge
+#import rasterio.merge
 '''
 bounds=None
 res=None
 nodata=None
 precision=7
 '''
-def merge(input1,bounds, res, nodata, precision):
-    import warnings
-    warnings.warn("Deprecated; Use rasterio.merge instead", DeprecationWarning)
-    return rasterio.merge.merge(input1, bounds, res, nodata, precision)
+#def merge(input1,bounds, res, nodata, precision):
+#    import warnings
+#    warnings.warn("Deprecated; Use rasterio.merge instead", DeprecationWarning)
+#    return rasterio.merge.merge(input1, bounds, res, nodata, precision)
 		
 '''
 for file in folder:

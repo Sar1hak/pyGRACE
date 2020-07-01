@@ -1,6 +1,8 @@
 
 #Stracking of tiff files
 #import gdal
+
+
 '''
 from gdal import gdal_merge
 def tif_stack(file1,file2,file3):
@@ -18,28 +20,30 @@ gdal_merge.py [-o out_filename] [-of out_format] [-co NAME=VALUE]*
               [-ot datatype] [-createonly] input_files
 '''
 
-import os
-import subprocess 
-def tif_stack(file1,file2,file3,index): 
+#import os
+#import subprocess 
+#def tif_stack(file1,file2,file3,index): 
 
-	out_filename = 'stacked'+ str(index) +'.tif'
-	out_format = 'gtiff'
-	nodata_value = -9999
+#	out_filename = 'stacked'+ str(index) +'.tif'
+#	out_format = 'gtiff'
+#	nodata_value = -9999
 	
-	command = ('C:/Users/LENOVO/Anaconda3/Scripts/gdal_merge.py -o '+out_filename+' -of '+ 
-	                out_format+' -separate -q -n '+str(nodata_value)+ ' ' +
-					file1 + ' ' + file2 + ' ' + file3 )
-	print (command)
+#	command = ('C:/Users/LENOVO/Anaconda3/Scripts/gdal_merge.py -o '+out_filename+' -of '+ 
+#	                out_format+' -separate -q -n '+str(nodata_value)+ ' ' +
+#					file1 + ' ' + file2 + ' ' + file3 )
+#	print (command)
        
-	# run gdal_merge.py tool with os call
-	os.system(command)
+#	## run gdal_merge.py tool with os call
+#	os.system(command)
 
-	output = None
-	try:
-		output = subprocess.check_output(command,shell=True)
-	except subprocess.CalledProcessError as e:
-	    output = e.output
-	return output
+#	output = None
+#	try:
+#		output = subprocess.check_output(command,shell=True)
+#	except subprocess.CalledProcessError as e:
+#	    output = e.output
+#	return output
+
+
 '''       
       # warp to clean up data
       newoutputname = pathname +  "ET_ensemble_" + str(year) + "-" + str(month) + "-01.tif "
