@@ -4,19 +4,21 @@
 from __future__ import print_function
 import numpy as np 
 import os
-import skimage.io as io
-import skimage.transform as trans
 from keras.models import Model
 from keras.layers import Conv2D, MaxPooling2D, Dropout, Input, concatenate, UpSampling2D
-from keras.callbacks import ModelCheckpoint
 from keras.optimizers import Adam
 import cv2
 
 OUTPUT_MASK_CHANNELS=1
 
-def unet(pretrained_weights = None,input_size = (256,256,3)):#256.256
+def unet(pretrained_weights = None, input_shape):
+	"""
+	Arguments:
+	    pretrained_weights: Defined weights to the model for better approch.
+		input_shape: initial input shape of the image.
 	
-	inputs = Input(input_size)
+	"""
+	
 	conv1 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(inputs)
 	conv1 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv1)
 	pool1 = MaxPooling2D(pool_size=(2, 2), dim_ordering="tf")(conv1)
@@ -61,12 +63,13 @@ def unet(pretrained_weights = None,input_size = (256,256,3)):#256.256
 	conv10 = Conv2D(OUTPUT_MASK_CHANNELS,1, 1, activation = 'sigmoid')(conv9)
 	
 	model = Model(input = inputs, output = conv10)
-	
-	model.compile(optimizer = Adam(lr = 1e-4), loss = 'categorical_crossentropy', metrics = ['accuracy'])
-	
+	model.compile(optimizer = Adam(lr = 1e-4), loss = 'binary_crossentropy', metrics = ['accuracy'])
 	#model.summary()
 	
 	if(pretrained_weights):
 		model.load_weights(pretrained_weights)
-		
+	"""
+	Return:
+	model: Model defined through Unet Architecture
+	"""
 	return model
